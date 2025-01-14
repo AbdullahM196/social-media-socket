@@ -1,0 +1,15 @@
+services:
+  socket:
+    build:
+      context: .
+      target: development
+    environment:
+      - NODE_ENV=development
+      - redisUri=redis://redis:6379
+    volumes:
+      - ./src:/app/api/src:ro
+    depends_on:
+      - redis
+    command: ["npm", "run", "dev"]
+  redis:
+    image: redis

@@ -1,0 +1,8 @@
+services:
+  socket:
+    build:
+      context: .
+      target: production
+    environment:
+      - NODE_ENV=production
+    command: ["npm", "start"]
