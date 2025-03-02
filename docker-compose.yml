@@ -4,5 +4,3 @@ services:
     ports:
       - "3500:3500"
     env_file: ./.env
-    environment:
-      - allowedOrigins=http://localhost:5173,http://localhost:4173

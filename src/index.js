@@ -1,5 +1,9 @@
 const { createClient } = require("redis");
-const allowedOrigins = process.env.allowedOrigins?.split(",");
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:4173",
+  "https://syncho-6294a.web.app/",
+];
 const { config } = require("dotenv");
 config();
 const io = require("socket.io")(3500, {
@@ -17,10 +21,11 @@ const io = require("socket.io")(3500, {
     optionsSuccessStatus: 200,
   },
 });
-
-const redisClient = createClient({
-  url: process.env.redisUri,
-});
+const redisClient =
+  createClient();
+  //   {
+  //   url: "redis://default:X6pbY7qtxvyiPbEAJ9wba1Ok5RJlCF5W@redis-16115.c14.us-east-1-2.ec2.redns.redis-cloud.com:16115",
+  // }
 (async () => {
   redisClient.on("error", (err) => {
     console.error("Redis connection error:", err);
