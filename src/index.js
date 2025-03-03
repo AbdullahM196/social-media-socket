@@ -1,5 +1,5 @@
 const { createClient } = require("redis");
-const allowedOrigins = process.Errors.allowedOrigins?.split(",");
+const allowedOrigins = process.env.allowedOrigins?.split(",");
 const { config } = require("dotenv");
 config();
 const io = require("socket.io")(3500, {
