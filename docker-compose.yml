@@ -1,6 +1,7 @@
 services:
   socket:
     container_name: socket-container
+    image: abdullahm196/socialmedia-socket
     ports:
       - "3500:3500"
     env_file: ./.env

@@ -2,7 +2,8 @@ const { createClient } = require("redis");
 const allowedOrigins = process.env.allowedOrigins?.split(",");
 const { config } = require("dotenv");
 config();
-const io = require("socket.io")(3500, {
+const PORT = process.env.PORT || 3500;
+const io = require("socket.io")(PORT, {
   cors: {
     origin: (origin, callback) => {
       if (!origin) {
@@ -165,4 +166,4 @@ io.on("connection", (socket) => {
     console.log("Client disconnected", socket.id);
   });
 });
-console.log("Socket server is running on port 3500");
+console.log("Socket server is running");
